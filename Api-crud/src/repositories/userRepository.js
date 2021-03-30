@@ -32,19 +32,25 @@ const repository = {
   delete: async ({ id }) => {
     const client = await pool.connect();
     try {
-      const query = `DELETE FROM user where id= VALUE(${id})`;
+      const query = `DELETE FROM "user" where id=$1;`;
+      const deletedUser = await client.query(query, [id]);
+      return true;
     } catch (e) {
-      console.log("erro no delete");
-      res.status(400).send({ e });
+      console.log(`erro no delete ${e.message}`);
+      return false;
     }
   },
-  update: async ({ name, email, password, id }) => {
+  update: async (id, { name, email, password }) => {
     const client = await pool.connect();
     try {
-      const query = `UPDATE  user  SET name =${name},${email}${id}`;
+      const query = `UPDATE "user" SET "name"='${name}', "email"='${email}', "password"='${password}' WHERE "id"='${id}';`;
+      const updatedUser = await client.query(query);
+      return true;
+      //const values = [name, email, password, id];
+      //const updatedUser = client.query(query, this.updateAt);
     } catch (e) {
-      console.log("erro no update");
-      res.status(400).send({ e });
+      console.log(`erro no updateController ${e.message}`);
+      return false;
     }
   },
 };

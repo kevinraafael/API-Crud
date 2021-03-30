@@ -5,8 +5,8 @@ router.get("/users", userController.getAll);
 
 router.post("/users", userController.create);
 //Metodo createrouter.post("/users", userController.create)
-router.delete("/users", userController.delete);
+router.delete("/users/:id", userController.delete);
 
-router.put("/users", userController.update);
+router.put("/users/:id", userController.update);
 
 module.exports = router;

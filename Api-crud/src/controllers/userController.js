@@ -26,16 +26,17 @@ const resources = {
   },
   delete: async (req, res) => {
     try {
-      const userDelete = await userRepository.delete(req.body);
-      res.send(console.log("Usuario deletado com sucesso"));
+      const userDelete = await userRepository.delete(req.params);
+      res.send("Usuario deletado com sucesso");
     } catch (e) {
-      console.log("erro no delete");
+      console.log("erro no delete Controller");
       res.status(400).send({ e });
     }
   },
   update: async (req, res) => {
     try {
-      const userUpdate = await userRepository.update(req.body);
+      const id = req.params.id;
+      const userUpdate = await userRepository.update(id, req.body);
       res.send(console.log("usuario atualizado com sucesso"));
     } catch (e) {
       console.log("erro no update");
