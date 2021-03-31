@@ -1,3 +1,4 @@
+const { findById2 } = require("../repositories/userRepository");
 const userRepository = require("../repositories/userRepository");
 
 const resources = {
@@ -21,26 +22,33 @@ const resources = {
       res.send({ newUser });
     } catch (e) {
       console.log(e);
-      res.status(400).send({ e });
+      res.status(400).send({ e, message: "Erro no create" });
     }
   },
   delete: async (req, res) => {
     try {
       const userDelete = await userRepository.delete(req.params);
-      res.send("Usuario deletado com sucesso");
+      res.send({ message: "Usuario deletado com sucesso" });
     } catch (e) {
-      console.log("erro no delete Controller");
-      res.status(400).send({ e });
+      res.status(400).send({ e, message: "Erro no delete" });
     }
   },
   update: async (req, res) => {
+    const id = req.params.id;
+
     try {
-      const id = req.params.id;
-      const userUpdate = await userRepository.update(id, req.body);
-      res.send(console.log("usuario atualizado com sucesso"));
+      const hasUser = await userRepository.findById2(id);
+      if (hasUser == true) {
+        //const id = req.params.id;
+        const userUpdate = await userRepository.update(id, req.body);
+        res.send();
+      } else {
+        console.log("Usuario nao encontrado");
+      }
     } catch (e) {
-      console.log("erro no update");
-      res.status(400).send({ e });
+      res.status(400).send({ e, message: "Erro no update" });
+      //Validação de rota
+      // usar sqlize
     }
   },
 };
