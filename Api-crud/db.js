@@ -1,4 +1,4 @@
-const { Pool } = require("pg");
+/*const { Pool } = require("pg");
 
 const pool = new Pool({
   host: "172.18.80.45",
@@ -11,4 +11,12 @@ const pool = new Pool({
   connectionTimeoutMillis: 2000,
 });
 
-module.exports = pool;
+module.exports = pool;*/
+
+const Sequelize = require("sequelize");
+
+const sequelize = new Sequelize("postgres:localhost:54432/uberizacao", {
+  dialect: "postgres",
+});
+
+module.exports = sequelize;
