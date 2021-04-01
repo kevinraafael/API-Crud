@@ -52,7 +52,7 @@ const repository = {
 
     return userFinded.rowCount > 0;
   },
-  update: async (id, { name, email, password, active }) => {
+  update: async (id, { name, email, password, active = true }) => {
     const client = await pool.connect();
 
     try {
