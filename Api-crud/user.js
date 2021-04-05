@@ -2,7 +2,7 @@ const Sequelize = require("sequelize");
 const sequelize = require("./db");
 const database = require("./db");
 
-const user = database.define("user", {
+const User = database.define("User", {
   id: {
     type: Sequelize.INTEGER,
     autoIncrement: true,
@@ -14,24 +14,24 @@ const user = database.define("user", {
     allowNull: false,
   },
   email: {
-    type: sequelize.STRING,
+    type: Sequelize.STRING,
     allowNull: false,
   },
   password: {
-    type: sequelize.STRING,
+    type: Sequelize.STRING,
     allowNull: false,
   },
   active: {
-    type: sequelize.BOOLEAN,
+    type: Sequelize.BOOLEAN,
     allowNull: false,
   },
   createat: {
-    type: sequelize.DATE,
+    type: Sequelize.DATE,
     allowNull: false,
   },
   updateat: {
-    type: sequelize.DATE,
+    type: Sequelize.DATE,
     allowNull: false,
   },
 });
-module.exports = userSequelize;
+module.exports = User;

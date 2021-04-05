@@ -15,8 +15,11 @@ module.exports = pool;*/
 
 const Sequelize = require("sequelize");
 
-const sequelize = new Sequelize("postgres:localhost:54432/uberizacao", {
-  dialect: "postgres",
-});
+const sequelize = new Sequelize(
+  "postgres://renato:123456@172.18.80.45:5432/uberizacao",
+  {
+    dialect: "postgres",
+  }
+);
 
 module.exports = sequelize;
