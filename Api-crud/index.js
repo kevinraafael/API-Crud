@@ -24,15 +24,23 @@ app.use("/", require("./user"));
   // } catch (e) {
   //   console.log(e);
   // }
-  const resultadoCreate = await User.create({
+  /* const resultadoCreate = await User.create({
     name: "Kevin",
     email: "rafael@sequelizer",
     password: "45637",
   });
-  console.log(resultadoCreate);
+  console.log(resultadoCreate);*/
 
   // const
-  const findUser = await User.findByPk(1); // retorna o usuario com esse id
+  //Update
+  const findUser = await User.findByPk(24); // retorna o usuario com esse id // Usar find all
+  findUser.name = "Jason Toddy";
+  const resultadoSave = await findUser.save();
+  console.log(resultadoSave);
+  //Delete
+
+  const findUserToDelete = await User.findByPk(18);
+  findUserToDelete.destroy();
 })();
 
 app.listen(3000);
