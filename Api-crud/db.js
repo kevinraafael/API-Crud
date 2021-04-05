@@ -19,6 +19,16 @@ const sequelize = new Sequelize(
   "postgres://renato:123456@172.18.80.45:5432/uberizacao",
   {
     dialect: "postgres",
+    define: {
+      timestamps: false,
+      underscored: 1,
+      underscoredAll: 1,
+      defaultScope: {
+        attributes: {
+          exclude: ["createdAt", "updatedAt", "created_at", "updated_at"],
+        },
+      },
+    },
   }
 );
 
