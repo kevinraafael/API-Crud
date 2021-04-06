@@ -1,7 +1,6 @@
-const pool = require("../../db");
-const finded = false;
+const user = require("../database/user");
 const repository = {
-  getAll: async () => {
+  /*getAll: async () => {
     const client = await pool.connect();
     try {
       const query = `select * from "user";`;
@@ -12,83 +11,54 @@ const repository = {
     } finally {
       await client.release();
     }
-  },
+  },*/
   create: async ({ name, email, password }) => {
-    const client = await pool.connect();
     try {
-      const query = `INSERT into "user" (name,email,password, createat) VALUES ($1, $2, $3, $4) RETURNING *;`;
-
-      const newUser = await client.query(query, [
-        name,
-        email,
-        password,
-        new Date(),
-      ]);
-      console.log(newUser);
-      return newUser.rows;
+      const newUser = await user.create({
+        name: name,
+        email: email,
+        password: password,
+      });
+      return newUser;
     } catch (e) {
-      return false;
-    } finally {
-      await client.release();
+      console.log("Erro no create Repository", e);
     }
   },
   delete: async ({ id }) => {
-    const client = await pool.connect();
     try {
-      const query = `DELETE FROM "user" where id=$1;`;
-      const deletedUser = await client.query(query, [id]);
+      const findUserToDelete = await user.findByPk(id);
+      findUserToDelete.destroy();
+      res.send({ message: "Usuario deletado com sucesso" });
       return true;
     } catch (e) {
+      res.send({ message: "Usuario não encontrado" });
       return false;
-    } finally {
-      await client.release();
     }
   },
 
-  findById2: async (id) => {
-    const client = await pool.connect();
-    const findByIdQuery = `select * from "user" WHERE id=$1`;
-    const userFinded = await client.query(findByIdQuery, [id]);
+  /*findById2: async (id) => {
+    const findUser = await user.findByPk(id);
 
-    return userFinded.rowCount > 0;
-  },
-  update: async (id, { name, email, password, active = true }) => {
-    const client = await pool.connect();
-
+    return findUser;
+  },*/
+  update: async (id, { name, email, password }) => {
     try {
-      //const hasUser = await repository.findById2(id);
+      // tem que colocar a alteração que o usuário vai fazer nome, ou email/senha
+      //const userUpdated = await this.findById2.save();
+      const findUser = await user.findByPk(id);
 
-      // if (hasUser == true) {
-      const query = `UPDATE  "user" SET name = $1, email = $2, password = $3,active =$4, updateat = $5 WHERE "id" = $6;`;
-
-      const updatedUser = await client.query(query, [
-        name,
-        email,
-        password,
-        active,
-        new Date(),
-        id,
-      ]);
-      return true;
+      //if (findUser != null) {
+      findUser.name = name;
+      findUser.email = email;
+      findUser.password = password;
+      await findUser.save();
+      // } else {
+      //res.send({ message: "usuario nao encontrado" });
       //}
     } catch (e) {
-      console.log(e);
-      return false;
-    } finally {
-      await client.release();
+      console.log("Erro no update repository");
     }
   },
-  /*userStatus: async ({ active }) => {
-    const client = await pool.connect();
-    try {
-      const hasUser = await repository.findById2(id);
-      if (hasUser == true) {
-        const query = `UPDATE  "user" SET active = $1 WHERE "id" = $2;`;
-
-        const userStatus = await client.query(query, [active]);
-      }
-    } catch (e) {}
-  },*/
 };
 
 module.exports = repository;

@@ -1,14 +1,13 @@
 const express = require("express");
-const User = require("./user");
 const app = express();
 
 const router = require("express").Router();
 
 app.use(express.json());
 
-//app.use("/", require("./src/routes/userRoute"));
+app.use("/", require("./src/routes/userRoute"));
 
-app.use("/", require("./user"));
+//app.use("/", require("./user"));
 /*try {
   await sequelize.authenticate();
   console.log("Connection has been established successfully.");
@@ -16,7 +15,7 @@ app.use("/", require("./user"));
   console.error("Unable to connect to the database:", error);
 }*/
 
-(async () => {
+/*(async () => {
   const db = require("./db");
   // try {
   //   const resultado = await db.sync();
@@ -31,16 +30,17 @@ app.use("/", require("./user"));
   });
   console.log(resultadoCreate);*/
 
-  // const
-  //Update
-  const findUser = await User.findByPk(24); // retorna o usuario com esse id // Usar find all
+// const
+//Update
+/*const findUser = await User.findByPk(24); // retorna o usuario com esse id // Usar find all
   findUser.name = "Jason Toddy";
   const resultadoSave = await findUser.save();
   console.log(resultadoSave);
   //Delete
 
-  const findUserToDelete = await User.findByPk(18);
+  const findUserToDelete = await User.findByPk(19);
   findUserToDelete.destroy();
 })();
+*/
 
 app.listen(3000);

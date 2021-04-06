@@ -28,7 +28,7 @@ const resources = {
   delete: async (req, res) => {
     try {
       const userDelete = await userRepository.delete(req.params);
-      res.send({ message: "Usuario deletado com sucesso" });
+      res.send({ userDelete });
     } catch (e) {
       res.status(400).send({ e, message: "Erro no delete" });
     }
@@ -37,14 +37,14 @@ const resources = {
     const id = req.params.id;
 
     try {
-      const hasUser = await userRepository.findById2(id);
-      if (hasUser == true) {
-        //const id = req.params.id;
-        const userUpdate = await userRepository.update(id, req.body);
-        res.send();
-      } else {
-        console.log("Usuario nao encontrado");
-      }
+      //const hasUser = await userRepository.findById2(id);
+      //if (hasUser == true) {
+      //const id = req.params.id;
+      const userUpdate = await userRepository.update(id, req.body);
+      //res.send();
+      //} else {
+      //console.log("Usuario nao encontrado");
+      //}
     } catch (e) {
       res.status(400).send({ e, message: "Erro no update" });
       //Validação de rota
