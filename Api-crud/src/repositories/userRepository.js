@@ -1,17 +1,14 @@
 const user = require("../database/user");
 const repository = {
-  /*getAll: async () => {
-    const client = await pool.connect();
+  getAll: async () => {
     try {
-      const query = `select * from "user";`;
-      const users = await client.query(query);
-      return users.rows;
+      //const allUsers = await user.getTableName();
+      return await user.findAll();
     } catch (e) {
       return false;
     } finally {
-      await client.release();
     }
-  },*/
+  },
   create: async ({ name, email, password }) => {
     try {
       const newUser = await user.create({
@@ -24,23 +21,23 @@ const repository = {
       console.log("Erro no create Repository", e);
     }
   },
+  findById: async (id) => {
+    try {
+      return await user.findByPk(id);
+    } catch (e) {
+      console.log(e);
+    }
+  },
   delete: async ({ id }) => {
     try {
-      const findUserToDelete = await user.findByPk(id);
-      findUserToDelete.destroy();
-      res.send({ message: "Usuario deletado com sucesso" });
+      const findUser = await user.findByPk(id);
+      findUser.destroy();
+      res.send({ message: "usuario deletado com sucesso" });
       return true;
     } catch (e) {
-      res.send({ message: "Usuario não encontrado" });
       return false;
     }
   },
-
-  /*findById2: async (id) => {
-    const findUser = await user.findByPk(id);
-
-    return findUser;
-  },*/
   update: async (id, { name, email, password }) => {
     try {
       // tem que colocar a alteração que o usuário vai fazer nome, ou email/senha
@@ -52,11 +49,11 @@ const repository = {
       findUser.email = email;
       findUser.password = password;
       await findUser.save();
-      // } else {
-      //res.send({ message: "usuario nao encontrado" });
-      //}
+      console.log("update");
+      return true;
     } catch (e) {
-      console.log("Erro no update repository");
+      console.log("Erro no update repository", e);
+      return false;
     }
   },
 };

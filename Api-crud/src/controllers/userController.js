@@ -28,27 +28,27 @@ const resources = {
   delete: async (req, res) => {
     try {
       const userDelete = await userRepository.delete(req.params);
-      res.send({ userDelete });
+      res.send({ message: "usuario nao encontrado" });
+      return true;
     } catch (e) {
-      res.status(400).send({ e, message: "Erro no delete" });
+      res.status(400).send({ e, message: "Houve um erro no delete" });
     }
   },
   update: async (req, res) => {
     const id = req.params.id;
 
     try {
-      //const hasUser = await userRepository.findById2(id);
-      //if (hasUser == true) {
-      //const id = req.params.id;
-      const userUpdate = await userRepository.update(id, req.body);
-      //res.send();
-      //} else {
-      //console.log("Usuario nao encontrado");
-      //}
+      const hasUser = await userRepository.findById(id);
+      if (hasUser != null) {
+        const userUpdated = await userRepository.update(id, req.body);
+        res.send();
+      } else {
+        res.send();
+      }
+      return true;
     } catch (e) {
       res.status(400).send({ e, message: "Erro no update" });
-      //Validação de rota
-      // usar sqlize
+      return false;
     }
   },
 };

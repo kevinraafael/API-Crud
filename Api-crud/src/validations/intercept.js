@@ -1,4 +1,5 @@
 const { validationResult } = require("express-validator");
+const validation = require("./userValidation");
 
 const intercept = (req, res, next) => {
   const { errors } = validationResult(req);
@@ -8,4 +9,13 @@ const intercept = (req, res, next) => {
   }
   next();
 };
+
+/*const interceptId = (req, res, next) => {
+  const verifyNumberId = req.params(id).length();
+  if (verifyNumberId <= 0) {
+    console.log({ message: "ID invalido" });
+    return res.status(400);
+  }
+  next();
+};*/
 module.exports = intercept;
