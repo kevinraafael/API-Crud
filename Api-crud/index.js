@@ -7,40 +7,10 @@ app.use(express.json());
 
 app.use("/", require("./src/routes/userRoute"));
 
-//app.use("/", require("./user"));
-/*try {
-  await sequelize.authenticate();
-  console.log("Connection has been established successfully.");
-} catch (error) {
-  console.error("Unable to connect to the database:", error);
-}*/
-
-/*(async () => {
-  const db = require("./db");
-  // try {
-  //   const resultado = await db.sync();
-  //   //console.log("resultado", resultado);
-  // } catch (e) {
-  //   console.log(e);
-  // }
-  /* const resultadoCreate = await User.create({
-    name: "Kevin",
-    email: "rafael@sequelizer",
-    password: "45637",
-  });
-  console.log(resultadoCreate);*/
-
-// const
-//Update
-/*const findUser = await User.findByPk(24); // retorna o usuario com esse id // Usar find all
-  findUser.name = "Jason Toddy";
-  const resultadoSave = await findUser.save();
-  console.log(resultadoSave);
-  //Delete
-
-  const findUserToDelete = await User.findByPk(19);
-  findUserToDelete.destroy();
-})();
-*/
-
 app.listen(3000);
+
+/*
+Antes de começar a mexer com as telas
+1- Adicionar os campos: data(date),telefone(varchar),cpf(varchar) sendo esses Unique
+ 
+*/
