@@ -1,4 +1,5 @@
 const Sequelize = require("sequelize");
+const sequelize = require("./db");
 
 const database = require("./db");
 
@@ -33,6 +34,17 @@ const user = database.define(
       defaultValue: new Date(),
     },
     updateat: {
+      type: Sequelize.DATE,
+      defaultValue: new Date(),
+    },
+    cpf: {
+      type: Sequelize.STRING(),
+    },
+    telefone: {
+      type: Sequelize.STRING,
+      defaultValue: "00000000000",
+    },
+    datadenascimento: {
       type: Sequelize.DATE,
       defaultValue: new Date(),
     },

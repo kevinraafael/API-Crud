@@ -27,27 +27,48 @@ const resources = {
   },
   delete: async (req, res) => {
     try {
-      const userDelete = await userRepository.delete(req.params);
-      res.send({ message: "usuario nao encontrado" });
+      const { id } = req.params;
+
+      const hasUser = await userRepository.findById(id);
+
+      if (!hasUser) {
+        throw new Error("Não existe esse usuário.");
+      }
+
+      const userDelete = await userRepository.delete(id);
+
+      if (!userDelete) {
+        throw new Error("Erro apagar.");
+      }
+
+      res.send({ message: "apagado com sucesso" });
       return true;
     } catch (e) {
-      res.status(400).send({ e, message: "Houve um erro no delete" });
+      res
+        .status(400)
+        .send({ e: e.message, message: "Houve um erro no delete" });
     }
   },
   update: async (req, res) => {
-    const id = req.params.id;
+    const { id } = req.params;
 
     try {
       const hasUser = await userRepository.findById(id);
-      if (hasUser != null) {
-        const userUpdated = await userRepository.update(id, req.body);
-        res.send();
-      } else {
-        res.send();
+
+      if (!hasUser) {
+        throw new Error("Não existe esse usuário.");
       }
-      return true;
+
+      const userUpdated = await userRepository.update(id, req.body);
+
+      if (!userUpdated) {
+        throw new Error("Erro atualizar.");
+      }
+
+      res.send();
     } catch (e) {
-      res.status(400).send({ e, message: "Erro no update" });
+      console.log(e);
+      res.status(400).send({ e: e.message, message: "Erro no update" });
       return false;
     }
   },
