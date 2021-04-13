@@ -18,6 +18,7 @@ import {
   View,
 } from 'react-native';
 import Header from './src/components/Header';
+import Button from './src/components/Button';
 import {
   Colors,
   DebugInstructions,
@@ -58,6 +59,7 @@ const App: () => Node = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
   const title = 'Usuários';
+  //const namebut = 'Adicionar';
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -65,6 +67,7 @@ const App: () => Node = () => {
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
         <Header title={title} />
+        <Button />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
