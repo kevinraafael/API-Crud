@@ -20,10 +20,13 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     color: '#FFFFFF',
+    borderBottomColor: '#FFFFFF',
     fontSize: 16,
     fontWeight: 'bold',
     alignItems: 'center',
     backgroundColor: '#FF7E1F',
+    height: 40,
+    lineHeight: 327,
   },
 });
 
