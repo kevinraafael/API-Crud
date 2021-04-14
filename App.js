@@ -57,8 +57,8 @@ const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    //backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-    backgroundColor: '#FFFF',
+    backgroundColor: isDarkMode ? Colors.darker : '#FFFF',
+    // backgroundColor: '#FFFF',
   };
   const title = 'Usuários';
   //const namebut = 'Adicionar';
@@ -71,6 +71,14 @@ const App: () => Node = () => {
         <Header title={title} />
         <Button />
         <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
+        <UserCard />
+
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
