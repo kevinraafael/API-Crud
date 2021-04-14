@@ -8,25 +8,28 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const Button = ({title}) => {
+const Button = () => {
   return (
     <TouchableOpacity style={styles.button} onPress={() => {}}>
-      <Text>Adicionar</Text>
+      <Text style={styles.text}>Adicionar</Text>
     </TouchableOpacity>
   );
 };
 //rota para outra tela ao pressionar botão
 const styles = StyleSheet.create({
   button: {
-    flex: 1,
-    color: '#FFFFFF',
-    borderBottomColor: '#FFFFFF',
-    fontSize: 16,
-    fontWeight: 'bold',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#FF7E1F',
+    left: '7%',
     height: 40,
-    lineHeight: 327,
+    width: 327,
+    marginTop: 40,
+  },
+  text: {
+    fontSize: 16,
+    color: '#FFFFFF',
+    fontWeight: 'bold',
   },
 });
 
