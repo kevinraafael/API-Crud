@@ -21,10 +21,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FF7E1F',
-    left: '7%',
+    left: '8%',
     height: 40,
     width: 327,
-    marginTop: 40,
+    marginTop: 20,
+    borderRadius: 10,
   },
   text: {
     fontSize: 16,

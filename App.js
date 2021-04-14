@@ -19,6 +19,7 @@ import {
 } from 'react-native';
 import Header from './src/components/Header';
 import Button from './src/components/Button';
+import UserCard from './src/components/Users/UserCard';
 import {
   Colors,
   DebugInstructions,
@@ -56,7 +57,8 @@ const App: () => Node = () => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    //backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    backgroundColor: '#FFFF',
   };
   const title = 'Usuários';
   //const namebut = 'Adicionar';
@@ -68,6 +70,7 @@ const App: () => Node = () => {
         style={backgroundStyle}>
         <Header title={title} />
         <Button />
+        <UserCard />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
