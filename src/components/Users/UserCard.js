@@ -1,20 +1,15 @@
 import React, {Component} from 'react';
 import {View, Text, To, Image, StyleSheet} from 'react-native';
 
-class UserCard extends Component {
-  constructor(props) {
-    super(props);
-  }
+const UserCard = () => {
+  return (
+    <View style={styles.cardView}>
+      <Image style={styles.image} source={require('./Assets/image01.jpg')} />
+      <Text style={styles.name}>Amanda</Text>
+    </View>
+  );
+};
 
-  render() {
-    return (
-      <View style={styles.cardView}>
-        <Image style={styles.image} source={require('./Assets/image01.jpg')} />
-        <Text style={styles.name}>Amanda</Text>
-      </View>
-    );
-  }
-}
 const styles = StyleSheet.create({
   cardView: {
     flex: 1,

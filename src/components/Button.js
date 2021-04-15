@@ -1,16 +1,15 @@
 import React from 'react';
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Alert,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-const Button = () => {
+const Button = props => {
   return (
-    <TouchableOpacity style={styles.button} onPress={() => {}}>
+    <TouchableOpacity
+      style={styles.button}
+      onPress={() => {
+        props.navigation.navigate('aboutUser');
+      }}>
       <Text style={styles.text}>Adicionar</Text>
     </TouchableOpacity>
   );
