@@ -1,14 +1,15 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Button = props => {
+  const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={styles.button}
       onPress={() => {
-        props.navigation.navigate('aboutUser');
+        navigation.navigate('aboutUser');
       }}>
       <Text style={styles.text}>Adicionar</Text>
     </TouchableOpacity>

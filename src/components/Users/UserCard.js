@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
-import {View, Text, To, Image, StyleSheet} from 'react-native';
-
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 const UserCard = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.cardView}>
       <Image style={styles.image} source={require('./Assets/image01.jpg')} />
-      <Text style={styles.name}>Amanda</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('aboutUser')}>
+        <Text style={styles.name}>Amanda</Text>
+      </TouchableOpacity>
     </View>
   );
 };

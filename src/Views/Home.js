@@ -39,13 +39,7 @@ const Home = ({navigation}) => {
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => {
-            navigation.navigate('aboutUser');
-          }}>
-          <Text style={styles.text}>Adicionar</Text>
-        </TouchableOpacity>
+        <Button />
         <UserCard />
         <UserCard />
         <UserCard />
