@@ -32,13 +32,13 @@ const Home = ({navigation}) => {
   };
   const title = 'Usuários';
   //const namebut = 'Adicionar';
+  //<Header title={title} />
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header title={title} />
         <TouchableOpacity
           style={styles.button}
           onPress={() => {

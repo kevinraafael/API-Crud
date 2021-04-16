@@ -19,20 +19,13 @@ export default function aboutUser() {
   const backgroundStyle = {
     backgroundColor: '#FFFF',
   };
-  const title = 'Editar';
 
   return (
     <SafeAreaView style={backgroundStyle}>
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <Header title={title} />
-        <TouchableOpacity onPress={() => {}}>
-          <Image
-            style={styles.button}
-            source={require('../components/Users/Assets/backIcon.jpg')}
-          />
-        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {}} />
         <View />
       </ScrollView>
     </SafeAreaView>
