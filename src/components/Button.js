@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     color: '#FFFFFF',
-    fontWeight: 'bold',
+
+    fontFamily: 'Cairo',
   },
 });
 

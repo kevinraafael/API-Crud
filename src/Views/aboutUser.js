@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
-import {CommonActions} from '@react-navigation/native';
 
 import {
   SafeAreaView,
@@ -10,40 +8,32 @@ import {
   Text,
   useColorScheme,
   View,
-  TouchableOpacity,
-  Image,
-  TouchableOpacityBase,
 } from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import TheUser from '../components/Users/TheUser';
 
-export default function aboutUser() {
-  const backgroundStyle = {
-    backgroundColor: '#FFFF',
-  };
+const aboutUser = ({navigation}) => {
+  const backgroundStyle = 'red';
 
+  const title = 'Usuários';
+  //const namebut = 'Adicionar';
+  //<Header title={title} />
   return (
     <SafeAreaView style={backgroundStyle}>
+      <StatusBar barStyle={'light-content'} />
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <TouchableOpacity onPress={() => {}} />
-        <View />
+        <TheUser />
+
+        <View
+          style={{
+            backgroundColor: Colors.white,
+          }}
+        />
       </ScrollView>
     </SafeAreaView>
   );
-}
-/*
-<TouchableOpacity style={styles.backTouchabel} onPress={() => {}}>
-          <Image style={styles.backIcon}>
-            source = {require('../components/Users/Assets/backIcon.jpg')}
-          </Image>
-        </TouchableOpacity>
-*/
-const styles = StyleSheet.create({
-  button: {
-    width: 50,
-    height: 50,
-    padding: 10,
-    borderRadius: 30,
-    margin: 10,
-  },
-});
+};
+
+export default aboutUser;

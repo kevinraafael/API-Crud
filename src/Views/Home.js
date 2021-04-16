@@ -48,7 +48,6 @@ const Home = ({navigation}) => {
         <UserCard />
         <UserCard />
         <UserCard />
-
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
