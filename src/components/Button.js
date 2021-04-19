@@ -15,6 +15,7 @@ const Button = props => {
     </TouchableOpacity>
   );
 };
+
 //rota para outra tela ao pressionar botão
 const styles = StyleSheet.create({
   button: {
