@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {NavigationContainer, useNavigation} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {View, Text, Image, StyleSheet} from 'react-native';
+
+import MyAppSvg from './Assets/avatar.jpg';
+//<Image style={styles.image} source={require('./Assets/avatar.jpg')} />
 
 const TheUser = () => {
-  const navigation = useNavigation();
   return (
     <View style={styles.cardView}>
-      <Image style={styles.image} source={require('./Assets/avatar.jpg')} />
       <Text> Amanda</Text>
     </View>
   );
