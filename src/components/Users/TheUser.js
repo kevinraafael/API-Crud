@@ -5,59 +5,83 @@ import SaveButton from '../SaveButton';
 //<Image style={styles.image} source={require('./Assets/avatar.jpg')} />
 
 const TheUser = () => {
+  const [text, OnchangeText] = React.useState('Informe seu nome');
+  const [number, onChangeNumber] = React.useState(null);
   return (
     <View>
       <View style={styles.card}>
         <Text>
           <Icon name="user" size={32} color="#0154AD" />
         </Text>
-        <Text style={styles.name}>informe seu nome</Text>
-        <Text />
+        <TextInput
+          style={styles.name}
+          OnchangeText={onChangeNumber}
+          value={number}
+          placeholder="informe seu nome"
+        />
       </View>
 
       <View style={styles.card}>
         <Text>
           <Icon name="envelope-o" size={28} color="#0154AD" />
         </Text>
-        <Text style={styles.name}>social@incontre.com.br</Text>
-        {/* <Text style={styles.checkItem2}>
-          <Icon name="check" size={16} color="#7C8B99" />
-        </Text> */}
+        <TextInput
+          style={styles.name}
+          OnchangeText={onChangeNumber}
+          value={number}
+          placeholder="informe seu email"
+        />
       </View>
 
       <View style={styles.card}>
         <Text>
           <Icon name="phone" size={32} color="#0154AD" />
         </Text>
-        <Text style={styles.name}>67991318961</Text>
-        {/* <Text style={styles.checkItem3}>
-          <Icon name="check" size={16} color="#7C8B99" />
-        </Text> */}
+        <TextInput
+          style={styles.name}
+          OnchangeText={onChangeNumber}
+          value={number}
+          placeholder="informe seu telefone"
+        />
       </View>
       <View style={styles.card}>
         <Text>
           <Icon name="calendar" size={32} color="#0154AD" />
         </Text>
-        <Text style={styles.name}>24/09/1999</Text>
-        {/* <Text style={styles.checkItem4}>
-          <Icon name="check" size={16} color="#7C8B99" />
-        </Text> */}
+        <TextInput
+          style={styles.name}
+          OnchangeText={onChangeNumber}
+          value={number}
+          placeholder="informe sua data de nascimento"
+        />
       </View>
 
       <View style={styles.card}>
         <Text>
           <Icon name="id-card-o" size={32} color="#0154AD" />'
         </Text>
-        <Text style={styles.name}>001.***.***</Text>
-        {/* <Text style={styles.checkItem4}>
-          <Icon name="check" size={16} color="#7C8B99" />
-        </Text> */}
+        <TextInput
+          style={styles.name}
+          OnchangeText={onChangeNumber}
+          value={number}
+          placeholder="informe seu CPF"
+        />
       </View>
       <SaveButton />
     </View>
   );
 };
 
+// const insertText = () => {
+//   return (
+//     <TextInput
+//       style={styles.name}
+//       OnchangeText={onChangeNumber}
+//       value={number}
+//       placeholder="informe seu nome"
+//     />
+//   );
+// };
 const styles = StyleSheet.create({
   card: {
     flex: 1,
