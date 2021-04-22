@@ -1,22 +1,41 @@
-/*
-Esse arquivo deve conter a lista de usuarios , porem esse data temos que puxar do banco de dados da API
-import React, {component} from 'react';
-import {
-  View,
-  Text,
-  TouchableHighlight,
-  Image,
-  Linking,
-  StyleSheet,
-  FlatList,
-} from 'react-native';
+import React, {Component} from 'react';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+const UserList = () => {
+  const navigation = useNavigation();
+  return (
+    <View style={styles.cardView}>
+      <Image style={styles.image} source={require('./Assets/image01.jpg')} />
+    </View>
+  );
+};
 
-export default function FlatList(){
-    return (
-        data = {[1, 2,3,4,5,6,7,8]}, // Lista com os dados dos usuarios
-        // no caso data vai ser o numero de usuarios do banco
+const styles = StyleSheet.create({
+  cardView: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginVertical: 20,
+    marginHorizontal: 20,
+    alignItems: 'center',
+  },
+  name: {
+    fontSize: 16,
+    color: '#0154AD',
+    fontWeight: 'bold',
+    fontFamily: 'Cairo',
+    width: 96,
+    height: 30,
+  },
+  image: {
+    width: 41,
+    height: 41,
+    padding: 10,
+    borderRadius: 50,
+    margin: 10,
+  },
+});
 
-        keyExtractor = {},// Retorna uma chave para ser usada na indexação dos itens da lista
-        renderItem = {}, // Função que retorna o componente para renderizar na lista
-    )
-}*/
+export default UserCard;

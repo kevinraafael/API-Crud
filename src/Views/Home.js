@@ -16,13 +16,14 @@ import {
   Text,
   useColorScheme,
   View,
-  TouchableOpacity,
+  FlatList,
 } from 'react-native';
-import Header from '../components/Header';
+
 import Button from '../components/Button';
 import UserCard from '../components/Users/UserCard';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
+import Rede from '../services/Fetch';
 const Home = ({navigation}) => {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -35,18 +36,9 @@ const Home = ({navigation}) => {
   //<Header title={title} />
   return (
     <SafeAreaView style={backgroundStyle}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+      <ScrollView style={backgroundStyle}>
         <Button />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
-        <UserCard />
+        <Rede />
         <View
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,

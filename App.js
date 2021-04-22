@@ -45,6 +45,9 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFFF',
+  },
   header: {
     fontSize: 18,
     color: '#FFFFFF',
