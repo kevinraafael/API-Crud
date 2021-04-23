@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import TheUser from '../components/Users/TheUser';
+import TheUser from '../services/TheUser';
 
 const aboutUser = ({navigation}) => {
   const backgroundStyle = 'red';

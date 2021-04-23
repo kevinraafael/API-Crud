@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, StyleSheet, Image} from 'react-native';
 
-import {getUsers} from './users';
+import {getUsers} from './usersOperations';
 export default function () {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -28,7 +28,7 @@ export default function () {
       </View>
     );
   }
-  // arrumar para async await  essa funcao
+
   return (
     <FlatList
       style={styles.cardView}
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     marginVertical: 20,
     marginHorizontal: 20,
+
     backgroundColor: '#FFFF',
   },
   name: {
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'Cairo',
     lineHeight: 60,
-    width: 96,
+    width: 177,
     justifyContent: 'center',
     alignItems: 'center',
   },
