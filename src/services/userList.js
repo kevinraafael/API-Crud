@@ -1,10 +1,19 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, FlatList, StyleSheet, Image} from 'react-native';
-
-import {getUsers} from './usersOperations';
+import {
+  View,
+  Text,
+  FlatList,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {getUsers, deleteUsers} from './usersOperations';
 export default function () {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
+  let [removed, setRemove] = useState();
 
   useEffect(() => {
     async function start() {
@@ -16,8 +25,38 @@ export default function () {
     }
     start();
   }, []);
+  function remove(item) {
+    console.log(item);
+    return deleteUsers(item);
+  }
 
+  function confirmUserDeletion(item) {
+    Alert.alert('Excluir usuário', 'Deseja excluir o usuário ?', [
+      {
+        text: 'sim',
+
+        onPress() {
+          //console.warn('delete ' + item.id),
+          remove(item.id);
+        },
+      },
+      {
+        text: 'nao',
+      },
+    ]);
+  }
+  function getActions(item) {
+    return (
+      <TouchableOpacity onPress={() => deleteUsers(item.id)}>
+        <Text>
+          <Icon name="trash" size={24} color="#0154AD" />
+        </Text>
+      </TouchableOpacity>
+      // onPress ={() =>baseProps.}
+    );
+  }
   function renderItem({item}) {
+    const id = item.id;
     return (
       <View style={styles.container}>
         <Image
@@ -25,6 +64,11 @@ export default function () {
           source={require('../components/Users/Assets/Perfil.jpeg')}
         />
         <Text style={styles.name}>{item.name}</Text>
+        <TouchableOpacity onPress={() => confirmUserDeletion(item)}>
+          <Text>
+            <Icon name="trash" size={24} color="#0154AD" />
+          </Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -67,6 +111,7 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     margin: 10,
   },
+  delete: {},
 });
 
 //Mascara nos imputs, salvando,deletando

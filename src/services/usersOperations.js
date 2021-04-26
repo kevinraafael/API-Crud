@@ -1,4 +1,4 @@
-const baseUrl = 'http://192.168.42.146:3000/users';
+const baseUrl = 'http://192.168.42.146:3000/users/';
 
 export async function getUsers() {
   try {
@@ -19,5 +19,16 @@ export async function postUsers(user) {
     body: JSON.stringify(user),
   });
   const users = await request.json();
+}
+export async function deleteUsers(id) {
+  try {
+    await fetch(`${baseUrl}${id}`, {
+      method: 'DELETE',
+    });
+  } catch (e) {
+    console.log(e);
+  }
+
+  //deleteUsers();
 }
 //ReactNative flash message
