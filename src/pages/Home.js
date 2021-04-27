@@ -34,7 +34,7 @@ const Home = ({navigation}) => {
   const title = 'Usuários';
   //>
   return (
-    <SafeAreaView style={backgroundStyle}>
+    <View style={backgroundStyle}>
       <Button />
       <ShowUsers />
       <View
@@ -42,7 +42,7 @@ const Home = ({navigation}) => {
           backgroundColor: isDarkMode ? Colors.black : Colors.white,
         }}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

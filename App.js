@@ -10,7 +10,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator style={styles.backgroundColor}>
         <Stack.Screen
           name="Header"
           component={Home}
@@ -59,6 +59,9 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     textAlign: 'center',
     lineHeight: 56,
+    backgroundColor: '#0154AD',
+  },
+  backgroundColor: {
     backgroundColor: '#0154AD',
   },
 });

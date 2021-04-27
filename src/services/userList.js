@@ -6,15 +6,18 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
+  TouchableHighlight,
   Alert,
 } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {getUsers, deleteUsers} from './usersOperations';
 export default function () {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   let [removed, setRemove] = useState();
-
+  const navigation = useNavigation();
   useEffect(() => {
     async function start() {
       const request = await getUsers();
@@ -55,15 +58,19 @@ export default function () {
       // onPress ={() =>baseProps.}
     );
   }
+
   function renderItem({item}) {
     const id = item.id;
+    //
     return (
       <View style={styles.container}>
         <Image
           style={styles.image}
           source={require('../components/Users/Assets/Perfil.jpeg')}
         />
-        <Text style={styles.name}>{item.name}</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('aboutUser')}>
+          <Text style={styles.name}>{item.name}</Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={() => confirmUserDeletion(item)}>
           <Text>
             <Icon name="trash" size={24} color="#0154AD" />
@@ -111,7 +118,9 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     margin: 10,
   },
-  delete: {},
+  delete: {
+    right: 10,
+  },
 });
 
 //Mascara nos imputs, salvando,deletando

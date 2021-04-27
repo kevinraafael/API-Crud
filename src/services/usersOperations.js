@@ -31,4 +31,13 @@ export async function deleteUsers(id) {
 
   //deleteUsers();
 }
+export async function updateUser(user) {
+  try {
+    await fetch(`${baseUrl}`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(user),
+    });
+  } catch (e) {}
+}
 //ReactNative flash message
