@@ -12,7 +12,7 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator style={styles.backgroundColor}>
         <Stack.Screen
-          name="Header"
+          name="Home"
           component={Home}
           options={{
             title: 'Usuários',

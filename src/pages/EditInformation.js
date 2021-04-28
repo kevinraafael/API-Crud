@@ -104,7 +104,7 @@ const AboutUser = () => {
             </View>
             <TouchableOpacity
               style={styles.button}
-              onPress={() => newUserOrUpdate()}>
+              onPress={() => newUserOrUpdate() && navigation.navigate('Home')}>
               <Text style={styles.buttonText}>Salvar</Text>
             </TouchableOpacity>
           </View>
