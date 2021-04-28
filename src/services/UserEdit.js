@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -8,10 +8,13 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-//<Image style={styles.image} source={require('./Assets/avatar.jpg')} />
+const userId = usersOperations.getUsers().id;
+
 import {withFormik} from 'formik';
+import userList from './userList';
 
 const usersOperations = require('./usersOperations');
+
 const Form = props => (
   <View style={styles.container}>
     <View style={styles.card}>
@@ -21,7 +24,7 @@ const Form = props => (
       <TextInput
         value={props.values.name}
         onChangeText={text => props.setFieldValue('name', text)}
-        placeholder="informe seu nome"
+        placeholder="Insira o teu nome"
       />
     </View>
     <View style={styles.card}>
@@ -70,9 +73,8 @@ export default withFormik({
 
   handleSubmit: values => {
     console.log(values);
-    // const user = JSON.stringify(values);
-    // console.log(user);
-    usersOperations.postUsers(values); // ao clicar em salvar adicionar um novo usuario
+
+    usersOperations.updateUser(65, values); // ao clicar em salvar adicionar um novo usuario
   },
 })(Form);
 

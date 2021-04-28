@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Image,
   TouchableOpacity,
-  TouchableHighlight,
   Alert,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -18,6 +17,7 @@ export default function () {
   const [data, setData] = useState([]);
   let [removed, setRemove] = useState();
   const navigation = useNavigation();
+
   useEffect(() => {
     async function start() {
       const request = await getUsers();
@@ -52,7 +52,7 @@ export default function () {
     return (
       <TouchableOpacity onPress={() => deleteUsers(item.id)}>
         <Text>
-          <Icon name="trash" size={24} color="#0154AD" />
+          <Icon name="trash" size={12} color="#0154AD" />
         </Text>
       </TouchableOpacity>
       // onPress ={() =>baseProps.}
@@ -68,12 +68,22 @@ export default function () {
           style={styles.image}
           source={require('../components/Users/Assets/Perfil.jpeg')}
         />
-        <TouchableOpacity onPress={() => navigation.navigate('aboutUser')}>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('EditInformation', {
+              user: item,
+            })
+          }>
           <Text style={styles.name}>{item.name}</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => confirmUserDeletion(item)}>
           <Text>
-            <Icon name="trash" size={24} color="#0154AD" />
+            <Icon
+              style={styles.delete}
+              name="trash"
+              size={17}
+              color="#0154AD"
+            />
           </Text>
         </TouchableOpacity>
       </View>
@@ -89,8 +99,7 @@ export default function () {
     />
   );
 }
-//
-//<Text style={styles.name}>{item.name}</Text>
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -119,7 +128,8 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   delete: {
-    right: 10,
+    margin: 66,
+    lineHeight: 60,
   },
 });
 
