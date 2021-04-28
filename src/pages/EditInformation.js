@@ -1,6 +1,6 @@
 import {useNavigation, useRoute} from '@react-navigation/core';
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 import {
   SafeAreaView,
@@ -17,14 +17,16 @@ import UserList from '../services/userList';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-
+import getUsers from '../services/usersOperations';
 import {updateUser} from '../services/usersOperations';
 
 //Terminar de passar os outros parametros
 //e arrumar a funcao no botao para realizar o update
+
 const AboutUser = () => {
   const navigation = useNavigation();
   const route = useRoute();
+
   const [user, setUser] = useState(
     route.params
       ? route.params.user

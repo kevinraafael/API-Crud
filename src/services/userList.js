@@ -12,25 +12,33 @@ import {useNavigation} from '@react-navigation/native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {getUsers, deleteUsers} from './usersOperations';
+import {useIsFocused} from '@react-navigation/native';
+
 export default function () {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
   let [removed, setRemove] = useState();
   const navigation = useNavigation();
+  const isFocused = useIsFocused();
 
   useEffect(() => {
-    async function start() {
-      const request = await getUsers();
-      if (request) {
-        setData(request.users);
-      }
-      setLoading(false);
+    if (isFocused) {
+      start();
     }
-    start();
-  }, []);
+  }, [isFocused]);
+
+  async function start() {
+    const request = await getUsers();
+    if (request) {
+      setData(request.users);
+    }
+    setLoading(false);
+  }
+
   function remove(item) {
     console.log(item);
-    return deleteUsers(item);
+    deleteUsers(item);
+    start();
   }
 
   function confirmUserDeletion(item) {
