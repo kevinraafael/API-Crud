@@ -72,8 +72,6 @@ export default withFormik({
   // }),
 
   handleSubmit: values => {
-    console.log(values);
-
     usersOperations.updateUser(65, values); // ao clicar em salvar adicionar um novo usuario
   },
 })(Form);

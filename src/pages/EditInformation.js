@@ -2,6 +2,7 @@ import {useNavigation, useRoute} from '@react-navigation/core';
 import React from 'react';
 import {useState, useEffect} from 'react';
 
+import {TextInputMask} from 'react-native-masked-text';
 import {
   SafeAreaView,
   ScrollView,
@@ -76,7 +77,13 @@ const AboutUser = () => {
             </View>
             <View style={styles.card}>
               <Icon name="phone" size={28} color="#0154AD" />
-              <TextInput
+              <TextInputMask
+                type={'cel-phone'}
+                options={{
+                  maskType: 'BRL',
+                  withDDD: true,
+                  dddMask: '(99) ',
+                }}
                 value={user.telefone}
                 onChangeText={telefone => setUser({...user, ...{telefone}})}
                 placeholder=" Informe seu telefone"
@@ -85,7 +92,11 @@ const AboutUser = () => {
 
             <View style={styles.card}>
               <Icon name="calendar" size={28} color="#0154AD" />
-              <TextInput
+              <TextInputMask
+                type={'datetime'}
+                options={{
+                  format: 'YYYY/MM/DD',
+                }}
                 value={user.datadenascimento}
                 onChangeText={datadenascimento =>
                   setUser({...user, ...{datadenascimento}})
@@ -96,7 +107,8 @@ const AboutUser = () => {
 
             <View style={styles.card}>
               <Icon name="id-card-o" size={28} color="#0154AD" />
-              <TextInput
+              <TextInputMask
+                type={'cpf'}
                 value={user.cpf}
                 onChangeText={cpf => setUser({...user, ...{cpf}})}
                 placeholder=" Informe seu CPF"

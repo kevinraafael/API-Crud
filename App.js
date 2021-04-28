@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import Home from './src/pages/Home';
-import aboutUser from './src/pages/aboutUser';
+
 import EditInformation from './src/pages/EditInformation';
 export default function App() {
   const Stack = createStackNavigator();
@@ -23,22 +23,7 @@ export default function App() {
             },
           }}
         />
-        <Stack.Screen
-          name="aboutUser"
-          component={aboutUser}
-          options={{
-            title: 'Editar',
-            headerTitleStyle: {
-              alignSelf: 'center',
-              right: '9%',
-              textAlign: 'center',
-            },
-            headerTintColor: '#FFFFFF',
-            headerStyle: {
-              backgroundColor: '#0154AD',
-            },
-          }}
-        />
+
         <Stack.Screen
           name="EditInformation"
           component={EditInformation}

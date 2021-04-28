@@ -11,7 +11,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 //<Image style={styles.image} source={require('./Assets/avatar.jpg')} />
 import {withFormik} from 'formik';
 
-const usersOperations = require('./usersOperations');
+const usersOperations = require('../services/usersOperations');
 const Form = props => (
   <View style={styles.container}>
     <View style={styles.card}>

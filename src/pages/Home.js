@@ -20,7 +20,7 @@ import {
 } from 'react-native';
 
 import Button from '../components/Button';
-import UserCard from '../components/Users/UserCard';
+
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 import ShowUsers from '../services/userList';
