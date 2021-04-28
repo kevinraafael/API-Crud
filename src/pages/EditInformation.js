@@ -11,6 +11,8 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Keyboard,
+  KeyboardAvoidingView,
 } from 'react-native';
 
 import UserList from '../services/userList';
@@ -18,7 +20,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import getUsers from '../services/usersOperations';
-import {updateUser} from '../services/usersOperations';
+import {updateUser, postUsers} from '../services/usersOperations';
 
 //Terminar de passar os outros parametros
 //e arrumar a funcao no botao para realizar o update
@@ -39,74 +41,80 @@ const AboutUser = () => {
   console.log(route.params);
   const backgroundStyle = 'red';
 
-  const title = 'Usuários';
-  //const namebut = 'Adicionar';
-  //<Header title={title} />
+  function newUserOrUpdate() {
+    const requestUser = route.params
+      ? updateUser(user.id, user)
+      : postUsers(user);
+    return requestUser;
+  }
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={'light-content'} />
+
       <ScrollView
         contentInsetAdjustmentBehavior="automatic"
         style={backgroundStyle}>
-        <View style={styles.container}>
-          <View style={styles.card}>
-            <Text>
-              <Icon name="user" size={32} color="#0154AD" />
-            </Text>
-            <TextInput
-              value={user.name}
-              onChangeText={name => setUser({...user, ...{name}})}
-              placeholder="Insira o teu nome"
-            />
-          </View>
-          <View style={styles.card}>
-            <Icon name="envelope-o" size={28} color="#0154AD" />
-            <TextInput
-              value={user.email}
-              onChangeText={email => setUser({...user, ...{email}})}
-              placeholder=" Informe seu email"
-            />
-          </View>
-          <View style={styles.card}>
-            <Icon name="phone" size={28} color="#0154AD" />
-            <TextInput
-              value={user.telefone}
-              onChangeText={telefone => setUser({...user, ...{telefone}})}
-              placeholder=" Informe seu telefone"
-            />
+        <KeyboardAvoidingView>
+          <View style={styles.container}>
+            <View style={styles.card}>
+              <Text>
+                <Icon name="user" size={32} color="#0154AD" />
+              </Text>
+              <TextInput
+                value={user.name}
+                onChangeText={name => setUser({...user, ...{name}})}
+                placeholder="Insira o teu nome"
+              />
+            </View>
+            <View style={styles.card}>
+              <Icon name="envelope-o" size={28} color="#0154AD" />
+              <TextInput
+                value={user.email}
+                onChangeText={email => setUser({...user, ...{email}})}
+                placeholder=" Informe seu email"
+              />
+            </View>
+            <View style={styles.card}>
+              <Icon name="phone" size={28} color="#0154AD" />
+              <TextInput
+                value={user.telefone}
+                onChangeText={telefone => setUser({...user, ...{telefone}})}
+                placeholder=" Informe seu telefone"
+              />
+            </View>
+
+            <View style={styles.card}>
+              <Icon name="calendar" size={28} color="#0154AD" />
+              <TextInput
+                value={user.datadenascimento}
+                onChangeText={datadenascimento =>
+                  setUser({...user, ...{datadenascimento}})
+                }
+                placeholder=" Informe sua data de nascimento"
+              />
+            </View>
+
+            <View style={styles.card}>
+              <Icon name="id-card-o" size={28} color="#0154AD" />
+              <TextInput
+                value={user.cpf}
+                onChangeText={cpf => setUser({...user, ...{cpf}})}
+                placeholder=" Informe seu CPF"
+              />
+            </View>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => newUserOrUpdate()}>
+              <Text style={styles.buttonText}>Salvar</Text>
+            </TouchableOpacity>
           </View>
 
-          <View style={styles.card}>
-            <Icon name="calendar" size={28} color="#0154AD" />
-            <TextInput
-              value={user.datadenascimento}
-              onChangeText={datadenascimento =>
-                setUser({...user, ...{datadenascimento}})
-              }
-              placeholder=" Informe sua data de nascimento"
-            />
-          </View>
-
-          <View style={styles.card}>
-            <Icon name="id-card-o" size={28} color="#0154AD" />
-            <TextInput
-              value={user.cpf}
-              onChangeText={cpf => setUser({...user, ...{cpf}})}
-              placeholder=" Informe seu CPF"
-            />
-          </View>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => updateUser(user.id, user)}>
-            <Text style={styles.buttonText}>Salvar</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View
-          style={{
-            backgroundColor: Colors.white,
-          }}
-        />
+          <View
+            style={{
+              backgroundColor: Colors.white,
+            }}
+          />
+        </KeyboardAvoidingView>
       </ScrollView>
     </SafeAreaView>
   );

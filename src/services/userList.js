@@ -56,16 +56,6 @@ export default function () {
       },
     ]);
   }
-  function getActions(item) {
-    return (
-      <TouchableOpacity onPress={() => deleteUsers(item.id)}>
-        <Text>
-          <Icon name="trash" size={12} color="#0154AD" />
-        </Text>
-      </TouchableOpacity>
-      // onPress ={() =>baseProps.}
-    );
-  }
 
   function renderItem({item}) {
     const id = item.id;

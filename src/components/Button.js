@@ -9,7 +9,7 @@ const Button = props => {
     <TouchableOpacity
       style={styles.button}
       onPress={() => {
-        navigation.navigate('aboutUser');
+        navigation.navigate('EditInformation');
       }}>
       <Text style={styles.text}>Adicionar</Text>
     </TouchableOpacity>
