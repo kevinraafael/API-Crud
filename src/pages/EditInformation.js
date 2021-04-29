@@ -12,15 +12,17 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  Keyboard,
   KeyboardAvoidingView,
 } from 'react-native';
 
-import UserList from '../services/userList';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import UserAvatar from '../components/Users/Assets/Icons/avatar.svg';
+import Calendar from '../components/Users/Assets/Icons/encontro.svg';
+import Email from '../components/Users/Assets/Icons/email.svg';
+import Phone from '../components/Users/Assets/Icons/phone.svg';
+import Cpf from '../components/Users/Assets/Icons/CPF.svg';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import getUsers from '../services/usersOperations';
+
 import {updateUser, postUsers} from '../services/usersOperations';
 
 //Terminar de passar os outros parametros
@@ -59,25 +61,28 @@ const AboutUser = () => {
           <View style={styles.container}>
             <View style={styles.card}>
               <Text>
-                <Icon name="user" size={32} color="#0154AD" />
+                <UserAvatar name="user" size={32} color="#0154AD" />
               </Text>
               <TextInput
+                style={styles.allText}
                 value={user.name}
                 onChangeText={name => setUser({...user, ...{name}})}
                 placeholder="Insira o teu nome"
               />
             </View>
             <View style={styles.card}>
-              <Icon name="envelope-o" size={28} color="#0154AD" />
+              <Email name="envelope-o" size={28} color="#0154AD" />
               <TextInput
+                style={styles.allText}
                 value={user.email}
                 onChangeText={email => setUser({...user, ...{email}})}
                 placeholder=" Informe seu email"
               />
             </View>
             <View style={styles.card}>
-              <Icon name="phone" size={28} color="#0154AD" />
+              <Phone name="phone" size={28} color="#0154AD" />
               <TextInputMask
+                style={styles.allText}
                 type={'cel-phone'}
                 options={{
                   maskType: 'BRL',
@@ -91,8 +96,9 @@ const AboutUser = () => {
             </View>
 
             <View style={styles.card}>
-              <Icon name="calendar" size={28} color="#0154AD" />
+              <Calendar name="calendar" size={28} color="#0154AD" />
               <TextInputMask
+                style={styles.allText}
                 type={'datetime'}
                 options={{
                   format: 'YYYY/MM/DD',
@@ -106,8 +112,9 @@ const AboutUser = () => {
             </View>
 
             <View style={styles.card}>
-              <Icon name="id-card-o" size={28} color="#0154AD" />
+              <Cpf style={styles.cpfS} width={35} height={35} />
               <TextInputMask
+                style={styles.allText}
                 type={'cpf'}
                 value={user.cpf}
                 onChangeText={cpf => setUser({...user, ...{cpf}})}
@@ -159,11 +166,17 @@ const styles = StyleSheet.create({
     marginTop: 160,
     borderRadius: 10,
   },
+  allText: {
+    paddingLeft: 15,
+  },
   buttonText: {
     fontSize: 16,
     color: '#FFFFFF',
 
     fontFamily: 'Cairo',
+  },
+  cpfS: {
+    padding: 5,
   },
 });
 

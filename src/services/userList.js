@@ -36,9 +36,7 @@ export default function () {
   }
 
   function remove(item) {
-    console.log(item);
-    deleteUsers(item);
-    start();
+    return deleteUsers(item) && start();
   }
 
   function confirmUserDeletion(item) {
